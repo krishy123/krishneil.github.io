@@ -608,6 +608,60 @@ section#contact :-ms-input-placeholder {
 section#contact .text-danger {
   color: #e74c3c;
 }
+section#merch {
+  background-color: #EFEFEF;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+section#merch .section-heading {
+  color: white;
+}
+section#merch .form-group {
+  margin-bottom: 25px;
+}
+section#merch .form-group input,
+section#merch .form-group textarea {
+  padding: 20px;
+}
+section#merch .form-group input.form-control {
+  height: auto;
+}
+section#merch .form-group textarea.form-control {
+  height: 236px;
+}
+section#merch .form-control:focus {
+  border-color: #fed136;
+  box-shadow: none;
+}
+section#merch ::-webkit-input-placeholder {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #eeeeee;
+}
+section#merch :-moz-placeholder {
+  /* Firefox 18- */
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #eeeeee;
+}
+section#merch ::-moz-placeholder {
+  /* Firefox 19+ */
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #eeeeee;
+}
+section#merch :-ms-input-placeholder {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #eeeeee;
+}
+section#merch .text-danger {
+  color: #e74c3c;
+}
 footer {
   padding: 25px 0;
   text-align: center;
