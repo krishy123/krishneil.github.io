@@ -225,6 +225,20 @@ fieldset[disabled] .btn-xl.active {
     font-size: 1.5em;
   }
 }
+
+.shop {
+  background-image: url('../img/Shop/bg.jpg');
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  text-align: center;
+  color: white;
+}
+
 header {
   background-image: url('../img/header-bg.jpg');
   background-repeat: no-repeat;
