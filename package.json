@@ -2,7 +2,7 @@
   "name": "vite_react_shadcn_ts",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://krishneil.com",
+  "homepage": "https://krishy123.github.ccom/krishneil.github.io",
   "type": "module",
   "scripts": {
 	"predeploy": "npm run build",
