@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Find the current time in any country and translate text into multiple languages.">
-    <meta name="keywords" content="world time, timezone converter, country time, time zones, language translation">
+    <meta name="description" content="Find the current time in any country and timezone.">
+    <meta name="keywords" content="world time, timezone converter, country time, time zones, clock">
     <meta name="author" content="Your Name">
     <title>What's the time in</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -23,23 +23,15 @@
             function updateTime() {
                 const timezone = $("#country").val();
                 if (timezone) {
-                    const now = new Date().toLocaleString("en-US", { timeZone: timezone });
-                    $("#time-display").text(`Current Time in ${timezone}: ${now}`);
+                    setInterval(() => {
+                        const now = new Date().toLocaleTimeString("en-US", { timeZone: timezone, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+                        $("#time-display").html(`<strong style="font-size: 2rem;">Current Time in ${timezone}: ${now}</strong>`);
+                    }, 1000);
                 }
             }
 
             $("#country").change(updateTime);
             updateTime();
-
-            $("#translate").click(function () {
-                const text = $("#content").text();
-                const targetLang = $("#language").val();
-                $.get(`https://api.mymemory.translated.net/get?q=${text}&langpair=en|${targetLang}`, function (data) {
-                    if (data.responseData) {
-                        $("#content").text(data.responseData.translatedText);
-                    }
-                });
-            });
         });
     </script>
 </head>
@@ -52,20 +44,6 @@
         </select>
     </div>
     
-    <p id="time-display" class="fs-5 text-primary"></p>
-    
-    <div class="mb-3">
-        <label for="language" class="form-label">Translate to:</label>
-        <select id="language" class="form-select">
-            <option value="es">Spanish</option>
-            <option value="fr">French</option>
-            <option value="de">German</option>
-            <option value="zh">Chinese</option>
-            <option value="hi">Hindi</option>
-        </select>
-        <button id="translate" class="btn btn-primary mt-2">Translate</button>
-    </div>
-    
-    <p id="content" class="border p-3">Hello! Welcome to our World Time and Translation Tool.</p>
+    <p id="time-display" class="text-center text-primary"></p>
 </body>
 </html>
