@@ -21,10 +21,13 @@
                 $("#country").append(new Option(zone, zone));
             });
 
+            let interval;
+
             function updateTime() {
+                clearInterval(interval);
                 const timezone = $("#country").val();
                 if (timezone) {
-                    setInterval(() => {
+                    interval = setInterval(() => {
                         const now = new Date().toLocaleTimeString("en-US", { timeZone: timezone, hour: '2-digit', minute: '2-digit', second: '2-digit' });
                         $("#time-display").html(`<strong style="font-size: 2rem;">Current Time in ${timezone}: ${now}</strong>`);
                     }, 1000);
@@ -49,9 +52,5 @@
         </div>
         <p id="time-display" class="text-center text-primary"></p>
     </div>
-    
-    <footer class="text-center mt-4">
-        <p class="small">Powered by 21st.dev theme</p>
-    </footer>
 </body>
 </html>
