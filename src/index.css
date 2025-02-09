@@ -1,0 +1,50 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-dark text-white antialiased;
+    background: linear-gradient(135deg, #1A1F2C 0%, #2d2a4a 50%, #2A2F3C 100%);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl shadow-[0_8px_32px_rgba(155,135,245,0.15)];
+  }
+  
+  .time-text {
+    @apply font-bold tracking-tight;
+    background: linear-gradient(to right, #9b87f5, #D3E4FD);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 10px rgba(155, 135, 245, 0.3);
+  }
+}
+
+.clock-container {
+  perspective: 1000px;
+}
+
+.select-container .select__control {
+  @apply bg-dark-lighter border-white/20 text-white;
+}
+
+.select-container .select__menu {
+  @apply bg-dark-lighter border border-white/20;
+}
+
+.select-container .select__option {
+  @apply text-white hover:bg-primary/20;
+}
+
+.select-container .select__single-value {
+  @apply text-white;
+}
+
+.select-container .select__input {
+  @apply text-white;
+}
