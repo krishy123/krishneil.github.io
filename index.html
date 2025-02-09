@@ -17,25 +17,31 @@
                 "Pacific/Midway", "America/Adak", "America/Anchorage", "America/Los_Angeles", "America/Denver", "America/Chicago", "America/New_York", "Atlantic/Azores", "Europe/London", "Europe/Paris", "Europe/Istanbul", "Asia/Dubai", "Asia/Kolkata", "Asia/Bangkok", "Asia/Tokyo", "Australia/Sydney", "Pacific/Auckland"
             ];
 
-            timezones.forEach(zone => {
-                $("#country").append(new Option(zone, zone));
-            });
-
             let interval;
 
-            function updateTime() {
+            function updateTime(timezone) {
                 clearInterval(interval);
-                const timezone = $("#country").val();
                 if (timezone) {
                     interval = setInterval(() => {
-                        const now = new Date().toLocaleTimeString("en-US", { timeZone: timezone, hour: '2-digit', minute: '2-digit', second: '2-digit' });
-                        $("#time-display").html(`<strong style="font-size: 2rem;">Current Time in ${timezone}: ${now}</strong>`);
+                        const now = new Date();
+                        const time = now.toLocaleTimeString("en-US", { timeZone: timezone, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+                        const date = now.toLocaleDateString("en-US", { timeZone: timezone });
+                        $("#time-display").html(`<strong style="font-size: 2rem;">Current Time in ${timezone}: ${time} (${date})</strong>`);
                     }, 1000);
                 }
             }
 
-            $("#country").change(updateTime);
-            updateTime();
+            function filterTimezones(query) {
+                let matches = timezones.filter(zone => zone.toLowerCase().includes(query.toLowerCase()));
+                let suggestions = matches.map(zone => `<option value="${zone}">${zone}</option>`).join('');
+                $("#timezone-list").html(suggestions);
+            }
+
+            $("#timezone-input").on("input", function() {
+                filterTimezones(this.value);
+            }).on("change", function() {
+                updateTime(this.value);
+            });
         });
     </script>
 </head>
@@ -47,8 +53,9 @@
     
     <div class="card p-4 shadow-sm">
         <div class="mb-3">
-            <label for="country" class="form-label">Select Timezone:</label>
-            <select id="country" class="form-select"></select>
+            <label for="timezone-input" class="form-label">Search Timezone:</label>
+            <input id="timezone-input" class="form-control" list="timezone-list">
+            <datalist id="timezone-list"></datalist>
         </div>
         <p id="time-display" class="text-center text-primary"></p>
     </div>
